@@ -91,4 +91,3 @@ while True:
         t.pendown()
         t.write(''' 😭😭\n💔💔''', font=("Arial", 90))
         turtle.done()
-
