@@ -1,44 +1,43 @@
 import random
 import turtle
-def gamewin(computer,you):
-    if computer==you:
+
+def gamewin(computer, you):
+    if computer == you:
         return None
-    elif computer==("Snake"):
-        if you==("Water"):
-            return False
-        elif you==("Gun"):
-            return True
-    elif computer==("Water"):
-        if you==("Gun"):
-            return False
-        elif you==("Snake"):
-            return True
-    elif computer==("Gun"):
-        if you==("Snake"):
-            return False
-        elif you==("Water"):
-            return True
-    # else:
-    #      return 1
-            
-print("Computer turn: Snake Water Gun")
-randno=random.randint(1,3)
-if randno==1:
-    computer="Snake"
-elif randno==2:
-    computer="Water"
-elif randno==3:
-    computer="Gun"
+    elif computer == "Snake":
+        return you == "Gun"
+    elif computer == "Water":
+        return you == "Snake"
+    elif computer == "Gun":
+        return you == "Water"
 
+while True:
+    print("\nComputer turn: Snake Water Gun")
+    randno = random.randint(1, 3)
+    if randno == 1:
+        computer = "Snake"
+    elif randno == 2:
+        computer = "Water"
+    else:
+        computer = "Gun"
 
-you=input("Your turn: Snake Water  Gun:  ")
-a=gamewin(computer,you)
+    you = input("Your turn: Snake Water Gun (or type 'exit' to quit): ").capitalize()
 
-print(f"computer chose= {computer}")
-print(f"you chose= {you}")
+    if you.lower() == "exit":
+        print("Game exited. Thanks for playing!")
+        break
 
-if a==None:
-    print('''Tie , Maybe aapne kuch glt chose kra ho 
+    if you not in ["Snake", "Water", "Gun"]:
+        print("Invalid choice! Please enter Snake, Water, or Gun.")
+        continue
+
+    a = gamewin(computer, you)
+
+    print(f"\nComputer chose: {computer}")
+    print(f"You chose: {you}")
+
+    if a is None:
+        print('''Tie , Maybe aapne kuch glt chose kra ho 
 ************   **********     *       *           **********    *********   *********   ***********   *       *
      *         *        *     *       *           *        *    *           *       *        *        * *     *
      *         *********      *********           **********    *           *********        *        *   *   *
@@ -46,63 +45,49 @@ if a==None:
      *         *     *                *           *        *    *       *   *       *        *        *     * *
      *         *        *     *********           *        *    *********   *       *   ***********   *       *
                 ''')
-    t = turtle.Turtle()
-    turtle.bgcolor("skyblue")
+        t = turtle.Turtle()
+        turtle.bgcolor("skyblue")
+        t.penup()
+        t.goto(-120, 3)
+        t.color("red")
+        t.pendown()
+        t.write(''' 🤜🤛\n 🤝''', font=("Arial", 90))
+        turtle.done()
 
-    t.penup()
-    t.goto(-120, 3)
-    t.color("red")
-    t.pendown()
-    t.write(''' 🤜🤛
- 🤝''', font=("Arial", 90))
-    turtle.done()
-
-    
-elif a==True:
-    print('''*               *          * * * * * * * * *   *         *
+    elif a is True:
+        print('''*               *          * * * * * * * * *   *         *
 *               *                 *            * *       *          *            
 *        *      *                 *            *   *     *         ***        
 *     *    *    *                 *            *     *   *        *****             
 *  *         *  *                 *            *       * *       *******      
 *               *          * * * * * * * * *   *         *          |        
                                                                     |
-          
           ''')
-    t = turtle.Turtle()
-    turtle.bgcolor("skyblue")
-
-    t.penup()
-    t.goto(-140, -90)
-    t.color("red")
-    t.pendown()
-    t.write(''' 
+        t = turtle.Turtle()
+        turtle.bgcolor("skyblue")
+        t.penup()
+        t.goto(-140, -90)
+        t.color("red")
+        t.pendown()
+        t.write(''' 
  🎊🎊
 🏆
 🎉🎉''', font=("Arial", 90))
-    turtle.done()
+        turtle.done()
 
-
-elif a==False:
-    print('''
+    else:
+        print('''
 *         ********  ********  ********
 *         *      *   *        *
 *         *      *     *      *****
 *         *      *        *   *
 ********  ********  ********  ********
                                  ''')
-    t = turtle.Turtle()
-    turtle.bgcolor("skyblue")
-
-    t.penup()
-    t.goto(-120, 3)
-    t.color("red")
-    t.pendown()
-    t.write(''' 😭😭
-💔💔''', font=("Arial", 90))
-    turtle.done()
-    
-
-
-
-
-    
+        t = turtle.Turtle()
+        turtle.bgcolor("skyblue")
+        t.penup()
+        t.goto(-120, 3)
+        t.color("red")
+        t.pendown()
+        t.write(''' 😭😭\n💔💔''', font=("Arial", 90))
+        turtle.done()
